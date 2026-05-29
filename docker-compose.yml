@@ -13,8 +13,16 @@ services:
       ADMIN_PASSWORD: "admin123"
 
       DB_CLIENT: "sqlite3"
-      DB_FILENAME: "/tmp/directus.db"
+      DB_FILENAME: "/directus/database/data.db"
+
+      STORAGE_LOCATIONS: "local"
+      STORAGE_LOCAL_DRIVER: "local"
+      STORAGE_LOCAL_ROOT: "/directus/uploads"
 
     volumes:
-      - ./uploads:/directus/uploads
+      - ./database:/directus/database
+      - directus_uploads:/directus/uploads
       - ./extensions:/directus/extensions
+
+volumes:
+  directus_uploads:
